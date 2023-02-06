@@ -1,7 +1,7 @@
-import TaskList from "./TaskList";
-import TaskForm from "./TaskForm";
+import TaskList from "./components/TaskList";
+import TaskForm from "./components/TaskForm";
 import { useState, useEffect } from "react";
-import { tasks as data } from "./tasks"; //se le puede asignar otro nombre con as
+import { tasks as data } from "./data/tasks"; //se le puede asignar otro nombre con as
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -10,13 +10,13 @@ function App() {
     setTasks(data);
   }, []); //lo que se ejecuta cuando carga el componente TaskList
 
-  function createTask(taskTitle) {
+  function createTask(task) {
     setTasks([
       ...tasks, //...tasks copia todos los elementos del arreglo, lo sgte agregará una tarea nueva
       {
-        title: taskTitle,
+        title: task.title,
         id: tasks.length,
-        description: "nueva tarea",
+        description: task.description,
       },
     ]);
   }
