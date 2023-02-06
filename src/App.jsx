@@ -21,10 +21,14 @@ function App() {
     ]);
   }
 
+  function deleteTask(taskId) {
+    setTasks(tasks.filter(task => task.id !== taskId)) //se va a ir comparando el id para devolver un nuevo arreglo
+  }
+
   return (
     <div>
       <TaskForm createTask={createTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} deleteTask={deleteTask} />
     </div>
   );
 }
